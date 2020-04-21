@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context=".view.DealActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="4dp"
         android:orientation="vertical">
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/deal_image"
             android:layout_width="wrap_content"
@@ -26,6 +29,7 @@
             android:gravity="center"
             android:textSize="28dp"
             android:textStyle="italic"
+            android:textColor="@color/white"
             android:text="TITULO"/>
         <TextView
             android:id="@+id/deal_offer_text"
@@ -34,51 +38,53 @@
             android:gravity="center"
             android:textSize="23dp"
             android:textStyle="italic"
+            android:textColor="@color/white"
             android:text="ofertext"/>
         <TextView
             android:id="@+id/deal_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:gravity="center"
             android:textSize="20dp"
             android:textStyle="italic"
+            android:textColor="@color/white"
             android:text="Descripcion"/>
         <TextView
             android:id="@+id/deal_categories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:gravity="center"
             android:textSize="20dp"
             android:textStyle="italic"
+            android:textColor="@color/white"
             android:text="Categorias"/>
         <TextView
             android:id="@+id/deal_store"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="20dp"
+            android:layout_marginTop="4dp"
+            android:textSize="23dp"
             android:textStyle="italic"
+            android:textColor="@color/white"
             android:text="store"/>
         <TextView
-            android:id="@+id/deal_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="20dp"
+            android:layout_marginTop="4dp"
             android:textStyle="italic"
-            android:text="url"/>
+            android:textColor="@color/white"
+            android:text="@string/ofert_validate"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:textStyle="italic"
-                android:text="@string/ofert_validate"/>
+
             <TextView
                 android:id="@+id/deal_start_date"
                 android:layout_width="wrap_content"
@@ -86,6 +92,7 @@
                 android:gravity="center"
                 android:textSize="20dp"
                 android:textStyle="italic"
+                android:textColor="@color/white"
                 android:text="start_date"/>
             <TextView
                 android:id="@+id/deal_end_date"
@@ -94,10 +101,20 @@
                 android:gravity="center"
                 android:textSize="20dp"
                 android:textStyle="italic"
+                android:textColor="@color/white"
                 android:text="end_date"/>
 
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/deal_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textStyle="italic"
+            android:textColor="@color/white"
+            android:text="url"/>
     </LinearLayout>
 
 </RelativeLayout>

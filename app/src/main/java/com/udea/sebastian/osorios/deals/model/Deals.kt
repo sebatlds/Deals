@@ -9,4 +9,4 @@ data class Deals(
     val offers: List<Offer>,
     @SerializedName("result")
     val result: Boolean
-) : Serializable
+)

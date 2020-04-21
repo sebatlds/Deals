@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Deals</string>
-    <string name="ofert_validate">Oferta Valida </string>
+    <string name="ofert_validate">Valid offer: </string>
 </resources>

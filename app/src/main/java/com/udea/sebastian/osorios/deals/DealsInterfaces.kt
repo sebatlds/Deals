@@ -16,9 +16,6 @@ interface DealsInterfaces {
         fun showErrorLoadDeals(message : String?)
     }
 
-    interface DealsModelServices{
-        fun loadListDeals()
-    }
 
     interface DealsInteractor{
         fun loadListDeals()

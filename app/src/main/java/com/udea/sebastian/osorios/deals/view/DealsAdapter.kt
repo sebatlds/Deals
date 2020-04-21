@@ -1,5 +1,6 @@
 package com.udea.sebastian.osorios.deals.view
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -52,10 +53,10 @@ class DealsAdapter(dealsList : ArrayList<Offer>) : RecyclerView.Adapter<DealsAda
 
         }
 
-        override fun onClick(view: View?) {
-          /*  val intent = Intent(itemView.context,DealActivity::class.java)
+        override fun onClick(view: View?) {34
+           val intent = Intent(itemView.context,DealActivity::class.java)
             intent.putExtra("deal",deal)
-            itemView.context.startActivity(intent)*/
+            itemView.context.startActivity(intent)
         }
     }
 }
