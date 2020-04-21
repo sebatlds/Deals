@@ -29,8 +29,6 @@ class DealActivity : AppCompatActivity() {
         deal_start_date.text = deal.startDate + " - "
         if(deal.imageUrl != ""){
             Picasso.get().load(deal.imageUrl).into(deal_image)
-        }else{
-            Toast.makeText(this,deal.imageUrl + "image",Toast.LENGTH_SHORT).show()
         }
     }
 }
