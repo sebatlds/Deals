@@ -1,62 +1,58 @@
 package com.udea.sebastian.osorios.deals.view
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import com.udea.sebastian.osorios.deals.R
 import com.udea.sebastian.osorios.deals.model.Offer
-import kotlinx.android.synthetic.main.recycler_view_items.view.*
+import com.udea.sebastian.osorios.deals.viewmodel.MainViewModel
+import com.udea.sebastian.osorios.deals.BR
+import com.udea.sebastian.osorios.deals.R
 
-class DealsAdapter(dealsList : ArrayList<Offer>) : RecyclerView.Adapter<DealsAdapter.DealsViewHolder>() {
+class DealsAdapter(var mainViewModel: MainViewModel) :
+    RecyclerView.Adapter<DealsAdapter.DealsViewHolder>() {
 
-    private var dealsList = ArrayList<Offer>()
+   private var dealsList : List<Offer> ?= null
 
-    init{
-        this.dealsList = dealsList
+    fun  setDealsList(deals : List<Offer>){
+        this.dealsList = deals
     }
 
     override fun onCreateViewHolder(parent : ViewGroup, viewType : Int) : DealsViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_items,parent,false)
-        return DealsViewHolder(
-            itemView
-        )
+        val layoutInflater : LayoutInflater = LayoutInflater.from(parent.context)
+        val binding : ViewDataBinding =
+            DataBindingUtil.inflate(layoutInflater, viewType, parent,false)
+        return DealsViewHolder(binding)
     }
 
-    override fun getItemCount() : Int = dealsList.size
+    override fun getItemCount() : Int = dealsList?.size ?: 0
 
     override fun onBindViewHolder(holder : DealsViewHolder, position : Int ){
-        val deal = dealsList[position]
-        holder.setDeal(deal)
+        holder.setDeal(mainViewModel,position)
+    }
+    override fun getItemViewType(position: Int): Int {
+        return getLayoutIdForPosition(position)
     }
 
-    class DealsViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        private var deal : Offer? = null
+    private fun getLayoutIdForPosition(position: Int): Int {
+        return R.layout.recycler_view_items
+    }
+
+    class DealsViewHolder(binding : ViewDataBinding) : RecyclerView.ViewHolder(binding.root){
+        private var binding : ViewDataBinding? = null
 
         init{
-            itemView.setOnClickListener(this)
+            this.binding = binding
         }
 
-        fun setDeal(deal : Offer){
-            this.deal = deal
-            itemView.text_view_title.text = deal.title
-            itemView.text_view_offer_value.text = deal.offerValue
-            itemView.text_view_categories.text = deal.categories
-            if(deal.imageUrl != ""){
-                Picasso.get().load(deal.imageUrl).into(itemView.imageg_view)
-            }
-
+        fun setDeal(mainViewModel: MainViewModel,position: Int) {
+            binding?.setVariable(BR.model, mainViewModel)
+            binding?.setVariable(BR.position, position)
         }
 
-        override fun onClick(view: View?) {34
-           val intent = Intent(itemView.context,DealActivity::class.java)
-            intent.putExtra("deal",deal)
-            itemView.context.startActivity(intent)
-        }
+
     }
+
 }
