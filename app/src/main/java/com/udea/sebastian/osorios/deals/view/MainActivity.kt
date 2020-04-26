@@ -47,11 +47,15 @@ class MainActivity : AppCompatActivity() {
             Log.d("Deal",deal[0].title)
             mainViewModel?.setDealsInDealsAdapter(deal)
         })
-
+        setupListClick()
     }
 
-    fun setupListClick(deal : Offer){
-        val intent = Intent(this,DealActivity::class.java)
+    fun setupListClick(){
+        mainViewModel?.getDealSelected()?.observe(this, Observer { deal ->
+            val intent = Intent(this,DealActivity::class.java)
+            intent.putExtra("deal",deal)
+            startActivity(intent)
+        })
     }
 
 }

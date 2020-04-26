@@ -18,7 +18,6 @@ class MainViewModel : ViewModel() {
     private var mainObservable : MainObservable = MainObservable()
     private var dealsAdapter : DealsAdapter ? = null
     private var dealSelected : MutableLiveData<Offer> = MutableLiveData()
-    private var mainActivity : MainActivity = MainActivity()
 
     fun callDeals(){
         mainObservable.callDeals()
@@ -45,7 +44,6 @@ class MainViewModel : ViewModel() {
     fun onItemClick(position: Int){
         val deal = getDeal(position)
         dealSelected.value = deal
-      //  mainActivity.setupListClick(deal!!)
     }
 
     fun getDeal(position : Int) : Offer?{
